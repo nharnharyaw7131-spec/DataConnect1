@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DataConnect GH Vendor Dashboard - View wallet balance, top up data, and manage transactions.">
+    <title>Dashboard - DataConnect GH</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        .dashboard-body {
+            background-color: var(--bg-light);
+            min-height: 100vh;
+        }
+
+        /* Top User Nav */
+        .dashboard-nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-badge {
+            background-color: #e0e7ff;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .logout-btn {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Dashboard Grid Layout */
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Balance & Quick Actions Sidebar */
+        .wallet-card {
+            background: linear-gradient(135deg, var(--secondary-color), #1e293b);
+            color: #ffffff;
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .wallet-card h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .wallet-amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .wallet-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-topup {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Quick Order Form Box */
+        .panel-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .panel-title {
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+        }
+
+        .form-control, .form-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Recent Orders Table */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background-color: var(--bg-light);
+            color: var(--text-muted);
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .status-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+    .container nav-bar {
+         padding: 0;
+    }
+
+    .btn btn-primary {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        /* Responsive Layout Switch */
+        @media (max-width: 850px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <!-- DASHBOARD HEADER -->
+    <header class="dashboard-nav">
+        <div class="container nav-bar">  
+            <a href="index.html" class="brand-logo">DataConnect</a>
+            
+            <div class="user-menu">
+                <span class="user-badge">Retail Vendor</span>
+                <a href="login.html" class="logout-btn">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT AREA -->
+    <main class="container">
+        
+        <div class="dashboard-layout">
+
+            <!-- LEFT COLUMN: Wallet & Quick Buy -->
+            <aside class="dashboard-sidebar">
+                
+                <!-- Balance Box -->
+                <div class="wallet-card">
+                    <h3>Wallet Balance</h3>
+                    <div class="wallet-amount">GH₵ 450.00</div>
+                    <div class="wallet-actions">
+                        <a href="#" class="btn-topup">+ Fund Wallet</a>
+                    </div>
+                </div>
+
+                <!-- Fast Order Panel -->
+                <div class="panel-card">
+                    <h2 class="panel-title">Send Data Bundle</h2>
+                    <form action="#" method="POST">
+                        
+                        <div class="form-group">
+                            <label for="network-select">Select Network</label>
+                            <select id="network-select" class="form-select" required>
+                                <option value="mtn">MTN Ghana</option>
+                                <option value="telecel">Telecel Ghana</option>
+                                <option value="at">AT (AirtelTigo)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone-number">Recipient Number</label>
+                            <input type="tel" id="phone-number" class="form-control" placeholder="024XXXXXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="package-select">Bundle Package</label>
+                            <select id="package-select" class="form-select" required>
+                                <option value="1">1 GB — GH₵ 6.00</option>
+                                <option value="2">2 GB — GH₵ 11.50</option>
+                                <option value="5">5 GB — GH₵ 27.00</option>
+                                <option value="10">10 GB — GH₵ 52.00</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Process Order &rarr;</button> 
+                    </form>
+                </div>
+
+            </aside>
+
+            <!-- RIGHT COLUMN: Order History -->
+            <section class="dashboard-main">
+                
+                <div class="panel-card">
+                    <h2 class="panel-title">Recent Transactions</h2>
+                    
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Recipient</th>
+                                    <th>Package</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#DC-8841</td>
+                                    <td>0244123456</td>
+                                    <td>MTN 5 GB</td>
+                                    <td>GH₵ 27.00</td>
+                                    <td><span class="status-badge status-success">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#DC-8840</td>
+                                    <td>0509876543</td>
+                                    <td>Telecel 2 GB</td>
+                                    <td>GH₵ 11.50</td>
+                                    <td><span class="status-badge status-success">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#DC-8839</td>
+                                    <td>0271122334</td>
+                                    <td>AT 10 GB</td>
+                                    <td>GH₵ 52.00</td>
+                                    <td><span class="status-badge status-pending">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#DC-8838</td>
+                                    <td>0555667788</td>
+                                    <td>MTN 1 GB</td>
+                                    <td>GH₵ 6.00</td>
+                                    <td><span class="status-badge status-success">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html> 

@@ -1,0 +1,404 @@
+/* 1. COLOR PALETTE & DESIGN TOYS (CSS VARIABLES) */
+:root {
+    --primary-color: #2563eb;    
+    --primary-hover: #1d4ed8;      
+    --secondary-color: #0f172a;    
+    --accent-color: #f59e0b;      
+    --bg-light: #f8fafc;           
+    --card-bg: #ffffff;            
+    --text-main: #334155;     
+    --text-muted: #64748b;         
+    --border-color: #e2e8f0;       
+    --radius: 12px;                
+    --transition: all 0.3s ease;   
+}
+
+/* 2. GLOBAL RESET & BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Universal Heading & Subtitle styles */
+h1, h2, h3, h4 {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Screen reader accessibility class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* 3. NAVIGATION BAR */
+.main-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    border-color: var(--secondary-color);
+}
+
+/* 4. HERO SECTION */
+.hero-section {
+    text-align: center;
+    padding: 60px 0 40px 0;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: var(--primary-color);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.badge span {
+    color: var(--accent-color);
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+    color: var(--primary-color);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 30px auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.quick-features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.quick-features li {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.check-icon {
+    color: #10b981;
+    margin-right: 5px;
+}
+
+/* 5. NETWORK CAROUSEL / SLIDER */
+.networks-section {
+    background-color: #ffffff;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.network-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.network-card img {
+    height: 45px;
+    width: auto;
+    filter: grayscale(20%);
+    transition: var(--transition);
+}
+
+.network-card img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+/* 6. GRIDS & CARDS */
+.service-grid, 
+.features-grid, 
+.earning-grid,
+.tiers-grid, 
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.service-card, .feature-card, .info-box, .tier-card, .trust-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+/* Fixed Hover Effect (-6px transform instead of -50px) */
+.service-card:hover, .feature-card:hover, .info-box:hover, .tier-card:hover, .trust-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.icon-box, .box-icon, .icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.tier-card h4, .info-box h4, .trust-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.tier-list, .benefits-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.tier-list li, .benefits-list li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.benefits-list {
+    max-width: 500px;
+    margin: 0 auto 25px auto;
+}
+
+.btn-link {
+    display: block;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+/* 7. WHY CHOOSE US & CALL TO ACTION (CTA) */
+.reason-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.reason-grid li {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.cta-box {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: 50px 30px;
+    border-radius: var(--radius);
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cta-box h3 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cta-box p {
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.cta-note {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* 8. FOOTER */ 
+.main-footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--border-color);
+    padding-top: 40px;
+}
+
+.footer-cta {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 30px 0;
+}
+
+.footer-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+/* 9. RESPONSIVE DESIGN FOR MOBILE & TABLETS */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .footer-links-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+}

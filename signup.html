@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your free DataConnect GH vendor shop and start selling data bundles in Ghana.">
+    <title>Sign Up - DataConnect GH</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        .auth-container {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+        }
+
+        .auth-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .auth-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--secondary-color);
+            font-size: 0.88rem;
+        }
+
+        .form-control, .form-select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            outline: none;
+            background-color: #ffffff;
+            transition: var(--transition);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .terms-check a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .back-home a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-home a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <nav class="nav-bar container">
+            <a href="index.html" class="brand-logo">DataConnect</a>
+            <a href="login.html" class="btn btn-secondary">Log In</a>
+        </nav>
+    </header>
+
+    <!-- MAIN SIGNUP FORM AREA -->
+    <main class="auth-container">
+        <div class="auth-card">
+
+            <div class="back-home">
+                <a href="index.html">&larr; Back to Home</a>
+            </div>
+
+            <div class="auth-header">
+                <h1>Create Your Data Shop</h1>
+                <p>Start selling data and digital services in Ghana</p>
+            </div>
+
+            <form action="#" method="POST">
+                
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" class="form-control" placeholder="e.g. Kwame Mensah" required>
+                </div>
+
+                <!-- Phone & Network Row -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="momo-phone">MoMo Number</label>
+                        <input type="tel" id="momo-phone" name="momo-phone" class="form-control" placeholder="0241234567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="network">Primary Network</label>
+                        <select id="network" name="network" class="form-select" required>
+                            <option value="mtn">MTN MoMo</option>
+                            <option value="telecel">Telecel Cash</option>
+                            <option value="airteltigo">AT Money</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Account Tier Selection -->
+                <div class="form-group">
+                    <label for="tier">Vendor Role</label>
+                    <select id="tier" name="tier" class="form-select" required>
+                        <option value="retail">Retail Vendor (Direct Sales)</option>
+                        <option value="agent">Agent (Direct + Sub-agent Network)</option>
+                        <option value="super">Super Agent (Full Network Management)</option>
+                    </select>
+                </div>
+
+                <!-- Password & Confirm Password Row -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and confirm my Mobile Money details are correct.</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-full">Create Free Account &rarr;</button>
+
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
